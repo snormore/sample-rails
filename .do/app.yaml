@@ -11,6 +11,12 @@ services:
     value: '1'
   - key: RAILS_ENV
     value: production
+  # The RAILS_MASTER_KEY environment variable is encrypted with a key specific
+  # to your application. You must first submit your spec with it unencrypted,
+  # and the platform will encrypt in place to look similar to what you see below
+  # with the EV prefix.
+  # Submitting the encrypted EV-prefixed value of another application will
+  # result in a failed deployment.
   - key: RAILS_MASTER_KEY
     value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
     type: SECRET
