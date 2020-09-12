@@ -1,4 +1,4 @@
-name: sample-rails-with-db
+name: sample-rails
 services:
 - name: web
   github:
