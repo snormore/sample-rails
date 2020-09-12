@@ -4,6 +4,7 @@ services:
   github:
     repo: snormore/sample-rails
     branch: master
+    deploy_on_push: true
   envs:
   - key: DATABASE_URL
     value: ${db.DATABASE_URL}
