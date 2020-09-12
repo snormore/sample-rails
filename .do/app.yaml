@@ -1,4 +1,4 @@
-name: sample-rails
+name: sample-rails-with-db
 services:
 - name: web
   github:
@@ -7,6 +7,11 @@ services:
   envs:
   - key: DATABASE_URL
     value: ${db.DATABASE_URL}
+  - key: RAILS_SERVE_STATIC_FILES
+    value: '1'
+  - key: RAILS_ENV
+    value: production
+  run_command: bin/rails db:setup && bin/rails server -p $PORT
 databases:
 - name: db
   engine: PG
