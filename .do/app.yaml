@@ -11,7 +11,7 @@ services:
     value: '1'
   - key: RAILS_ENV
     value: production
-  run_command: bin/rails db:setup && bin/rails server -p $PORT
+  run_command: bin/rails db:setup && bin/rails server
 databases:
 - name: db
   engine: PG
