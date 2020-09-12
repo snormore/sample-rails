@@ -1,0 +1,13 @@
+name: sample-rails
+services:
+- name: web
+  github:
+    repo: snormore/sample-rails
+    branch: master
+  envs:
+  - key: DATABASE_URL
+    value: ${db.DATABASE_URL}
+databases:
+- name: db
+  engine: PG
+  version: "12"
