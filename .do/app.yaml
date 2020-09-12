@@ -25,7 +25,7 @@ services:
   # Platform supports proper pre/post deploy jobs for running the DB migration.
   # This is relatively safe since Rails will lock migrations via the DB while
   # running, so even if you are deploying multiple instances, only 1 migration
-	# will be run.
+  # will be run.
   run_command: bin/rails db:migrate && bin/rails server
 databases:
 - name: db
