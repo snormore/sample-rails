@@ -21,7 +21,12 @@ services:
   - key: RAILS_MASTER_KEY
     value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
     type: SECRET
-  run_command: bin/rails db:create db:migrate && bin/rails server
+  # Note that we include the "rails db:migrate" command here until the App
+  # Platform supports proper pre/post deploy jobs for running the DB migration.
+  # This is relatively safe since Rails will lock migrations via the DB while
+  # running, so even if you are deploying multiple instances, only 1 will be
+  # run.
+  run_command: bin/rails db:migrate && bin/rails server
 databases:
 - name: db
   engine: PG
