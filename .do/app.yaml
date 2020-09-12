@@ -21,7 +21,7 @@ services:
   - key: RAILS_MASTER_KEY
     value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
     type: SECRET
-  run_command: bin/rails db:setup db:migrate && bin/rails server
+  run_command: bin/rails db:create db:migrate && bin/rails server
 databases:
 - name: db
   engine: PG
