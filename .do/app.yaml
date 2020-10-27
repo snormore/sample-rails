@@ -17,14 +17,28 @@ services:
   # and the platform will encrypt in-place to look similar to what you see below
   # with the EV prefix.
   - key: RAILS_MASTER_KEY
-    value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
+    value: secret
+    #value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
     type: SECRET
   # Note that we include the "rails db:migrate" command here until the App
   # Platform supports proper pre/post deploy jobs for running the DB migration.
   # This is relatively safe since Rails will lock migrations via the DB while
   # running, so even if you are deploying multiple instances, only 1 migration
   # will be run.
-  run_command: bin/rails db:migrate && bin/rails server
+  run_command: bin/rails server
+jobs:
+- name: migrate
+  kind: PRE_DEPLOY
+  github:
+    repo: snormore/sample-rails
+    branch: master
+    deploy_on_push: true
+  envs:
+  - key: DATABASE_URL
+    value: ${db.DATABASE_URL}
+  - key: RAILS_ENV
+    value: production
+  run_command: bin/rails db:migrate
 databases:
 - name: db
   engine: PG
