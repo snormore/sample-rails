@@ -20,6 +20,7 @@ services:
     value: secret
     #value: EV[1:xWTjge/c/Oe6kPy0/AFs916m3LcXMzWO:/RoXzy12ATYCexS2h50jI2tJFTQ9+E415Yldtl4l5Ua0UeHrERbI6epjcnehWKZZ]
     type: SECRET
+    scope: RUN_TIME
   run_command: bin/rails server
 jobs:
 - name: migrate
@@ -33,6 +34,8 @@ jobs:
     value: ${db.DATABASE_URL}
   - key: RAILS_ENV
     value: production
+  - key: RAILS_SERVE_STATIC_FILES
+    value: '1'
   run_command: bin/rails db:migrate
 databases:
 - name: db
