@@ -32,10 +32,10 @@ jobs:
   envs:
   - key: DATABASE_URL
     value: ${db.DATABASE_URL}
-  - key: RAILS_ENV
-    value: production
   - key: RAILS_SERVE_STATIC_FILES
     value: '1'
+  - key: RAILS_ENV
+    value: production
   run_command: bin/rails db:migrate
 databases:
 - name: db
